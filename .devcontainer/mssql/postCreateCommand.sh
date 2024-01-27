@@ -63,7 +63,7 @@ then
     done
 fi
 
-if [ $SApassword == "P@ssw0rd" ]
+if [ $SApassword == "P@ssw0rd!" ]
 then
     echo "$(tput setaf 1)WARNING$(tput sgr0): you are using the default sample password. If you want to change it, execute the following command"
     echo "sqlcmd -S localhost -U sa -P $SApassword -d master -Q \"ALTER LOGIN sa WITH PASSWORD = '<enterStrongPasswordHere>' \""
