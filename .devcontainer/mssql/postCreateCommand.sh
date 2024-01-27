@@ -8,7 +8,7 @@ sqlpath=$3
 echo "SELECT * FROM SYS.DATABASES" | dd of=testsqlconnection.sql
 for i in {1..60};
 do
-    /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P $SApassword -d master -i testsqlconnection.sql > /dev/null
+    sqlcmd -S localhost -U sa -P $SApassword -d master -i testsqlconnection.sql > /dev/null
     if [ $? -eq 0 ]
     then
         echo "SQL server ready"
@@ -45,7 +45,7 @@ then
         if [ $f == $sqlpath/*".sql" ]
         then
             echo "Executing $f"
-            /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P $SApassword -d master -i $f
+            sqlcmd -S localhost -U sa -P $SApassword -d master -i $f
         fi
     done
 fi
@@ -66,5 +66,5 @@ fi
 if [ $SApassword == "P@ssw0rd" ]
 then
     echo "$(tput setaf 1)WARNING$(tput sgr0): you are using the default sample password. If you want to change it, execute the following command"
-    echo "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P $SApassword -d master -Q \"ALTER LOGIN sa WITH PASSWORD = '<enterStrongPasswordHere>' \""
+    echo "sqlcmd -S localhost -U sa -P $SApassword -d master -Q \"ALTER LOGIN sa WITH PASSWORD = '<enterStrongPasswordHere>' \""
 fi
