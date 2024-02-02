@@ -16,3 +16,15 @@ curl -X POST \
     -H "Content-Type: application/json" \
     -d '{"query": "{ books(first: 2, orderBy: {id: ASC}) { items { id title } } }"}' \
     http://localhost:5000/graphql | jq
+
+# Checking DAB GraphQL with variables
+curl -X POST \
+    -H "Content-Type: application/json" \
+    -d '{"query": "query ($first: Int!) { books(first: $first) { items { id title } } }", "variables": {"first": 2}}' \
+    http://localhost:5000/graphql | jq
+
+# Checking DAB GraphQL with variables and operation name
+curl -X POST \
+    -H "Content-Type: application/json" \
+    -d '{"query": "query GetBooks($first: Int!) { books(first: $first) { items { id title } } }", "variables": {"first": 2}}' \
+    http://localhost:5000/graphql | jq
