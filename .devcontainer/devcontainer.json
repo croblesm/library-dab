@@ -46,7 +46,10 @@
 	"features": {
         "ghcr.io/devcontainers/features/azure-cli:1": {
             "version": "latest"
-        }
+        },
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+			"version": "latest"
+		}
 	},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [5000, 5001, 1433],
@@ -73,8 +76,8 @@
 	// postCreateCommand.sh parameters: $1=SA password, $2=dacpac path, $3=sql script(s) path
 	// "postCreateCommand": "bash .devcontainer/mssql/postCreateCommand.sh 'P@ssw0rd!' './bin/Debug/' './.devcontainer/mssql/'",
 	"postCreateCommand": "bash .devcontainer/mssql/postCreateCommand.sh 'P@ssw0rd!' './bin/Debug/' './.devcontainer/mssql/'",
-	"remoteEnv": {
-		"PATH": "${containerEnv:PATH}:/opt/mssql-tools/bin"
-	},
+	// "remoteEnv": {
+	// 	"PATH": "${containerEnv:PATH}:/opt/mssql-tools/bin"
+	// },
 	"postStartCommand": "cd DAB-Config && dab start --config=dab.config.json"
 }

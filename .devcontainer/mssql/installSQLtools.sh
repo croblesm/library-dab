@@ -15,12 +15,5 @@ unzip sqlpackage.zip -d /opt/sqlpackage
 rm sqlpackage.zip
 chmod a+x /opt/sqlpackage/sqlpackage
 
-echo "Installing sqlpackage"
-curl -sSL -o sqlpackage.zip "https://aka.ms/sqlpackage-linux"
-mkdir /opt/sqlpackage
-unzip sqlpackage.zip -d /opt/sqlpackage 
-rm sqlpackage.zip
-chmod a+x /opt/sqlpackage/sqlpackage
-
 # echo "Installing Data API Builder"
 # dotnet tool install --global  Microsoft.DataApiBuilder
